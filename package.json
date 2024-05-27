@@ -1,0 +1,36 @@
+{
+  "name": "@jun1999/file-view",
+  "private": false,
+  "version": "0.0.7",
+  "type": "module",
+  "main": "dist/file-view.umd.js",
+  "module": "dist/file-view.es.js",
+  "files": [
+    "dist/*",
+    "file-view.d.ts"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "vue-tsc && vite build",
+    "patch-version": "npm version patch",
+    "publish-online": "npm publish",
+    "deploy": "npm run build && npm run patch-version && npm run publish-online"
+  },
+  "dependencies": {
+    "@jun1999/file-view": "*0.0.6",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.77.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vue-tsc": "^2.0.6"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
