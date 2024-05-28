@@ -3,10 +3,10 @@
 // import FileView from "../packages/file-view/index";
 
 // 打包之后测试
-// import { FileView } from "../dist/file-view.es.js";
+import { FileView } from "../dist/file-view.es.js";
 
 // 测试发布的包
-import { FileView } from "@jun1999/file-view";
+// import { FileView } from "@jun1999/file-view";
 
 
 import { ref } from "vue";
