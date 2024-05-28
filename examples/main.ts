@@ -3,7 +3,6 @@ import './style.css'
 import App from './App.vue'
 
 // 本地开发
-// import '../dist/style.css';
 
 // 打包之后测试
 import "../dist/style.css";

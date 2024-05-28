@@ -1,10 +1,10 @@
 <template>
   <Teleport to="body">
-    <div v-show="visible" class="mask">
+    <div class="mask">
       <img-view ref="imgViewRef" :url="url" v-if="type == 'image'"></img-view>
       <video v-if="type == 'video'" id="video" controls :src="url"></video>
       <audio v-if="type == 'audio'" id="audio" controls :src="url"></audio>
-      <div class="close" @click="close">
+      <div v-if="close_btn" class="close" @click="close">
         <img src="../../icon/close.svg" alt="" />
       </div>
     </div>
@@ -12,7 +12,7 @@
 </template>
 <script setup lang="ts">
 import { mediaType } from "../../utils/tools";
-import { ref, watch, defineOptions } from "vue";
+import { ref, watch, defineOptions, nextTick } from "vue";
 
 import ImgView from "../components/ImgView.vue";
 // 一定要先给name赋值，这样后面的局部install和全局install方法才能读到同一个name
@@ -21,12 +21,19 @@ defineOptions({
 });
 
 // == 文件显示、关闭逻辑
-const porps = defineProps<{
-  url: string;
-  show: boolean;
-}>();
+
+// 接受传参并使用默认值
+const porps = withDefaults(
+  defineProps<{
+    url: string;
+    close_btn?: boolean;
+  }>(),
+  {
+    close_btn: true,
+  }
+);
+
 const emits = defineEmits(["close"]);
-const visible = ref(false);
 const type = ref("image");
 const imgViewRef = ref();
 
@@ -36,6 +43,10 @@ watch(
   (val: string) => {
     if (val) {
       type.value = mediaType(val);
+      nextTick(() => {
+        // 去初始化图片的缩放和旋转
+        type.value == "image" && imgViewRef.value && imgViewRef.value.initImg();
+      });
     }
   },
   {
@@ -43,18 +54,7 @@ watch(
     immediate: true,
   }
 );
-// 监听是否显示
-watch(
-  () => porps.show,
-  (val: boolean) => {
-    visible.value = val;
-    // 去初始化图片的缩放和旋转
-    type.value == "image" && imgViewRef.value && imgViewRef.value.initImg();
-  },
-  {
-    immediate: true,
-  }
-);
+
 const close = () => {
   // 关闭音频和视频的后台播放
   closeVideo();
