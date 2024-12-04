@@ -1,6 +1,9 @@
 export const mediaType = function (url: string) {
+  // 图片格式
   const imageRegex = /\.(jpg|jpeg|png|gif|svg|webp)$/i;
+  // 视频格式
   const videoRegex = /\.(mp4|webm|ogg|avi|mov|flv|mkv|wmv|mpg|mpeg|m4v|3gp|3g2|mj2|mjpeg)$/i;
+  // 音频格式
   const audioRegex =
     /\.(mp3|wav|ogg|oga|flac|ape|wma|mpc|m4a|aac|alac|ac3|adts|adts2|adts4|adts5|adts_aac_he|adts_aac_ltp|adts_aac_main|adts_aac_ssr|adts_he|adts_ltp|adts_main|adts_ssr|amr|awb|caf|mka|mkv|mp4|mpeg1video|mpeg2video|mpeg4|msvideo|nsv|ogg|ogv|qt|rm|rmvb|roq|svi|thp|tp|tpr|ts|vob|vpx|webm|webp|wmv|yuv)$/i;
 
