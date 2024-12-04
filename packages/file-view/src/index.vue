@@ -1,9 +1,13 @@
 <template>
   <Teleport to="body">
     <div class="mask">
+      <!-- 图片查看 -->
       <img-view ref="imgViewRef" :url="url" v-if="type == 'image'"></img-view>
+      <!-- 视频查看 -->
       <video v-if="type == 'video'" id="video" controls :src="url"></video>
+      <!-- 音频查看 -->
       <audio v-if="type == 'audio'" id="audio" controls :src="url"></audio>
+      <!-- 关闭按钮 -->
       <div v-if="close_btn" class="close" @click="close">
         <img src="../../icon/close.svg" alt="" />
       </div>
