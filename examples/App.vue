@@ -3,15 +3,20 @@
 // import FileView from "../packages/file-view/index";
 
 // 打包之后测试
-import { FileView } from "../dist/file-view.es.js";
+// import { FileView } from "../dist/file-view.es.js";
 
 // 测试发布的包
-// import { FileView } from "@jun1999/file-view";
+import { FileView } from "@jun1999/file-view";
 
 import { ref } from "vue";
 
+const show = ref(false);
+const showBtn = () => {
+  show.value = true;
+};
 const closeBtn = () => {
   console.log("FileView close按钮回调");
+  show.value = false;
 };
 
 const fileList = ref([
@@ -22,7 +27,13 @@ const fileList = ref([
 </script>
 
 <template>
-  <FileView :close_btn="true" :url="fileList[2]" @close="closeBtn"></FileView>
+  <FileView
+    v-if="show"
+    :close_btn="true"
+    :url="fileList[0]"
+    @close="closeBtn"
+  ></FileView>
+
   <button @click="showBtn">查看文件</button>
 </template>
 

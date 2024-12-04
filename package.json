@@ -18,7 +18,7 @@
     "deploy": "npm run build && npm run patch-version && npm run publish-online"
   },
   "dependencies": {
-    "@jun1999/file-view": "*0.0.6",
+    "@jun1999/file-view": "^0.0.9",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "vue": "^3.4.21"
   },
