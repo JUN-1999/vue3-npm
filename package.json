@@ -1,13 +1,13 @@
 {
-  "name": "@jun1999/file-view",
+  "name": "@jun1999/components",
   "private": false,
   "version": "0.0.10",
   "type": "module",
-  "main": "dist/file-view.umd.js",
-  "module": "dist/file-view.es.js",
+  "main": "dist/components.umd.js",
+  "module": "dist/components.es.js",
   "files": [
     "dist/*",
-    "file-view.d.ts"
+    "components.d.ts"
   ],
   "scripts": {
     "dev": "vite",
@@ -18,8 +18,11 @@
     "deploy": "npm run build && npm run patch-version && npm run publish-online"
   },
   "dependencies": {
-    "@jun1999/file-view": "^0.0.9",
+    "@js-preview/docx": "^1.6.4",
+    "@js-preview/excel": "^1.7.14",
+    "@js-preview/pdf": "^2.0.10",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "element-plus": "^2.10.5",
     "vue": "^3.4.21"
   },
   "devDependencies": {

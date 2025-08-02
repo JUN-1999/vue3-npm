@@ -1,40 +1,42 @@
-<script setup lang="ts">
-// 本地开发
-// import FileView from "../packages/file-view/index";
-
-// 打包之后测试
-// import { FileView } from "../dist/file-view.es.js";
-
-// 测试发布的包
-import { FileView } from "@jun1999/file-view";
-
-import { ref } from "vue";
-
-const show = ref(false);
-const showBtn = () => {
-  show.value = true;
-};
-const closeBtn = () => {
-  console.log("FileView close按钮回调");
-  show.value = false;
-};
-
-const fileList = ref([
-  "https://jljy2021.oss-cn-hangzhou.aliyuncs.com/wxb3999eccac7b923b/20240520/eaba41dea7ef4bf36b80d0cc376e4616.mp4",
-  "https://jljy2021.oss-cn-hangzhou.aliyuncs.com/wxb3999eccac7b923b/20240511/3b15f99314261f7a4ec719024b8b238c.mp3",
-  "https://jljy2021.oss-cn-hangzhou.aliyuncs.com/wxb3999eccac7b923b2024/05/11/b0b07202405111553135596.jpg",
-]);
-</script>
-
 <template>
-  <FileView
-    v-if="show"
-    :close_btn="true"
-    :url="fileList[0]"
-    @close="closeBtn"
-  ></FileView>
+
+  <FilePreview ref="FilePreviewRef"></FilePreview>
 
   <button @click="showBtn">查看文件</button>
 </template>
+
+
+<script setup lang="ts">
+// 本地开发
+// import FilePreview from "../packages/FilePreview/index";
+
+// 打包之后测试
+import { FilePreview } from "../dist/components.es.js";
+
+// 测试发布的包
+// import { FileView } from "@jun1999/file-view";
+
+import { ref } from "vue";
+const FilePreviewRef = ref(null);
+const showBtn = () => {
+  if (FilePreviewRef.value && typeof (FilePreviewRef.value as any).show === 'function') {
+    (FilePreviewRef.value as any).show(fileType.value['xlsx'])
+  }
+}
+
+
+/*
+[
+  "https://jljy2021.oss-cn-hangzhou.aliyuncs.com/wxb3999eccac7b923b/20240520/eaba41dea7ef4bf36b80d0cc376e4616.mp4",
+  "https://jljy2021.oss-cn-hangzhou.aliyuncs.com/wxb3999eccac7b923b/20240511/3b15f99314261f7a4ec719024b8b238c.mp3",
+  "",
+]
+*/
+const fileType = ref({
+ img:'https://jljy2021.oss-cn-hangzhou.aliyuncs.com/wxb3999eccac7b923b2024/05/11/b0b07202405111553135596.jpg',
+ xlsx:'https://handingweixiu.oss-cn-shanghai.aliyuncs.com/ruoyi/28a4216a-401f-43b1-aa9d-7ab7029cac6e.xlsx'
+});
+</script>
+
 
 <style scoped></style>

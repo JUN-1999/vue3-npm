@@ -29,8 +29,8 @@ export default defineConfig({
     },
     lib: {
       entry: 'packages/index.ts',
-      name: 'file-view',
-      fileName: (format) => `file-view.${format}.js`,
+      name: 'components',
+      fileName: (format) => `components.${format}.js`,
     },
   },
 })
