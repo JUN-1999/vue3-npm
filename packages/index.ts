@@ -1,10 +1,10 @@
 //package/index.js
 import FilePreview from "./FilePreview/index"; // 引入封装好的组件
+import FormGrid from "./FormGrid/index"; // 引入封装好的组件
 import { mediaType } from "./utils/tools"; // 导出可用的方法
-const coms = [FilePreview]; // 将来如果有其它组件,都可以写到这个数组里
+const coms = [FilePreview, FormGrid]; // 将来如果有其它组件,都可以写到这个数组里
 // 用于按需导入
-export { FilePreview };
-
+export { FilePreview, FormGrid };
 
 // 定义 install 方法
 const install = function (Vue: any) {
