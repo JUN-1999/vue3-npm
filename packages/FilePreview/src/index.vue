@@ -2,8 +2,8 @@
 <template>
   <div>
     <!-- word\excel\pdf 文件查看 -->
-    <el-dialog v-model="dialogVisible" title="文件查看" style="min-width: 800px;width: 95vw; height: 90vh" append-to-body
-      @close="close">
+    <el-dialog class="FilePreviewDialog" v-model="dialogVisible" title="文件查看"
+      style="min-width: 800px;width: 95vw; height: 90vh" append-to-body @close="close">
       <div id="preview"></div>
       <template #footer>
         <el-button @click="close">取消</el-button>
@@ -158,7 +158,8 @@ defineExpose({
 }
 </style>
 <style>
-.el-dialog {
+/* .el-dialog 样式并且有设置 样式 FilePreviewDialog 才生效  */
+.FilePreviewDialog {
   margin-top: 0 !important;
   position: fixed;
   top: 50%;

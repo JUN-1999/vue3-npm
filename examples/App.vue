@@ -13,14 +13,14 @@
 
 <script setup lang="ts">
 // 本地开发
-// import FilePreview from "../packages/FilePreview/index";
-// import FormGrid from "../packages/FormGrid/index";
+import FilePreview from "../packages/FilePreview/index";
+import FormGrid from "../packages/FormGrid/index";
 
 // 打包之后测试
 // import { FilePreview, FormGrid } from "../dist/components.es.js";
 
 // 测试发布的包
-import { FilePreview, FormGrid } from "@jun1999/components";
+// import { FilePreview, FormGrid } from "@jun1999/components";
 
 import { ref } from "vue";
 const FilePreviewRef = ref(null);
