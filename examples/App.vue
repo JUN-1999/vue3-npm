@@ -17,10 +17,10 @@
 // import FormGrid from "../packages/FormGrid/index";
 
 // 打包之后测试
-import { FilePreview, FormGrid } from "../dist/components.es.js";
+// import { FilePreview, FormGrid } from "../dist/components.es.js";
 
 // 测试发布的包
-// import { FileView } from "@jun1999/file-view";
+import { FilePreview, FormGrid } from "@jun1999/components";
 
 import { ref } from "vue";
 const FilePreviewRef = ref(null);
