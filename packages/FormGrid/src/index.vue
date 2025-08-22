@@ -93,10 +93,10 @@
           </el-upload>
         </template> -->
 
-        <!-- <template v-if="field.type == 'rich-text'">
+        <template v-if="field.type == 'rich-text'">
           <Editor v-model="modelValue[field.key]" :minHeight="100" :showToolbar="!field.disabled"
             :readOnly="field.disabled"></Editor>
-        </template> -->
+        </template>
       </el-form-item>
       <slot name="btns"></slot>
     </el-form>
@@ -119,7 +119,7 @@ import {
 
 import "element-plus/dist/index.css";
 import "element-plus/theme-chalk/dark/css-vars.css";
-// import Editor from "@/components/Editor/index";
+import Editor from "../../Editor";
 // import { getToken } from "@/utils/auth";
 
 const emits = defineEmits(["update:modelValue", "change", "deletekey"]);
