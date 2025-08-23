@@ -95,7 +95,7 @@
 
         <template v-if="field.type == 'rich-text'">
           <Editor v-model="modelValue[field.key]" :minHeight="100" :showToolbar="!field.disabled"
-            :readOnly="field.disabled"></Editor>
+            :readOnly="field.disabled" :uploadUrl="field.uploadUrl || ''" :token="field.token || ''"></Editor>
         </template>
       </el-form-item>
       <slot name="btns"></slot>

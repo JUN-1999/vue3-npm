@@ -24,6 +24,7 @@
 </template>
 
 <script setup>
+import axios from 'axios'
 import { ref, computed, getCurrentInstance, watch, onMounted } from 'vue';
 import { QuillEditor, Quill } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
@@ -176,6 +177,8 @@ onMounted(() => {
                                     }
                                 );
                             }
+                        }).catch(err => {
+                            console.log(err);
                         })
                     }
                 } else {
