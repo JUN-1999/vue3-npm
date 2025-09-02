@@ -4,6 +4,7 @@
     <el-form
       @submit.native.prevent
       :style="{
+        display: 'grid',
         gridTemplateColumns: `repeat(${
           props.repeat != 0 ? props.repeat : 'auto-fit'
         },${props.valuewidth == 'auto' ? '1fr' : template_columns_width})`,
