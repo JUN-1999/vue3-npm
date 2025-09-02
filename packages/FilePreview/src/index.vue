@@ -2,8 +2,23 @@
 <template>
   <div>
     <!-- word\excel\pdf 文件查看 -->
-    <el-dialog class="FilePreviewDialog" v-model="dialogVisible" title="文件查看"
-      style="min-width: 800px;width: 95vw; height: 90vh" append-to-body @close="close">
+    <el-dialog
+      class="FilePreviewDialog"
+      v-model="dialogVisible"
+      title="文件查看"
+      style="
+        min-width: 800px;
+        width: 95vw;
+        height: 90vh;
+        margin-top: 0 !important;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      "
+      append-to-body
+      @close="close"
+    >
       <div id="preview"></div>
       <template #footer>
         <el-button @click="close">取消</el-button>
@@ -12,8 +27,14 @@
     </el-dialog>
 
     <!-- 图片查看 -->
-    <el-image-viewer v-if="imagePreview" @close="imagePreview = false" z-index="99999999" :url-list="iamgeList"
-      :teleported="true" :hide-on-click-modal="true" />
+    <el-image-viewer
+      v-if="imagePreview"
+      @close="imagePreview = false"
+      z-index="99999999"
+      :url-list="iamgeList"
+      :teleported="true"
+      :hide-on-click-modal="true"
+    />
   </div>
 </template>
 <script setup>
@@ -160,10 +181,5 @@ defineExpose({
 <style>
 /* .el-dialog 样式并且有设置 样式 FilePreviewDialog 才生效  */
 .FilePreviewDialog {
-  margin-top: 0 !important;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 </style>
