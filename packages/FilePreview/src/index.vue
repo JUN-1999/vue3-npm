@@ -1,8 +1,18 @@
 <!--  -->
 <template>
   <div>
+    <!-- 图片查看 -->
+    <el-image-viewer
+      v-if="imagePreview"
+      @close="imagePreview = false"
+      z-index="99999999"
+      :url-list="iamgeList"
+      :teleported="true"
+      :hide-on-click-modal="true"
+    />
     <!-- word\excel\pdf 文件查看 -->
     <el-dialog
+      v-else
       class="FilePreviewDialog"
       v-model="dialogVisible"
       title="文件查看"
@@ -19,22 +29,12 @@
       append-to-body
       @close="close"
     >
-      <div id="preview" style="width: 100%; height: 77vh"></div>
+      <div id="preview" style="width: 100%; height: 70vh"></div>
       <template #footer>
         <el-button @click="close">取消</el-button>
         <el-button type="primary" @click="save">下载</el-button>
       </template>
     </el-dialog>
-
-    <!-- 图片查看 -->
-    <el-image-viewer
-      v-if="imagePreview"
-      @close="imagePreview = false"
-      z-index="99999999"
-      :url-list="iamgeList"
-      :teleported="true"
-      :hide-on-click-modal="true"
-    />
   </div>
 </template>
 <script setup>
@@ -59,6 +59,7 @@ const imagePreview = ref(false);
 const iamgeList = ref([]);
 let myPreviewer = null;
 const show = (filesrc) => {
+  imagePreview.value = false;
   const FileType = getFileType(filesrc);
   const FileArr = ["pdf", "word", "excel", "image"];
 
@@ -66,10 +67,13 @@ const show = (filesrc) => {
     // 在可处理文件格式内
     console.log(FileType);
 
-    if (FileType == "excel") {
+    if (FileType === "excel") {
       dialogVisible.value = true;
       setTimeout(() => {
-        myPreviewer = jsPreviewExcel.init(document.getElementById("preview"));
+        myPreviewer = jsPreviewExcel.init(document.getElementById("preview"), {
+          // 在这里添加配置对象
+          minColLength: 0,
+        });
         myPreviewer
           .preview(filesrc)
           .then((res) => {
@@ -85,7 +89,9 @@ const show = (filesrc) => {
 
       setTimeout(() => {
         //初始化时指明要挂载的父元素Dom节点
-        myPreviewer = jsPreviewDocx.init(document.getElementById("preview"));
+        myPreviewer = jsPreviewDocx.init(document.getElementById("preview"), {
+          zoom: true,
+        });
 
         //传递要预览的文件地址即可
         myPreviewer
@@ -102,6 +108,7 @@ const show = (filesrc) => {
       dialogVisible.value = true;
       setTimeout(() => {
         myPreviewer = jsPreviewPdf.init(document.getElementById("preview"), {
+          zoom: true,
           onError: (e) => {
             console.log("发生错误", e);
           },
