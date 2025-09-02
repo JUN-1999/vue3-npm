@@ -68,7 +68,7 @@ const show = (filesrc) => {
 
     if (FileType == "excel") {
       dialogVisible.value = true;
-      nextTick(() => {
+      setTimeout(() => {
         myPreviewer = jsPreviewExcel.init(document.getElementById("preview"));
         myPreviewer
           .preview(filesrc)
@@ -78,12 +78,12 @@ const show = (filesrc) => {
           .catch((e) => {
             console.log("预览失败", e);
           });
-      });
+      }, 300);
     }
     if (FileType == "word") {
       dialogVisible.value = true;
 
-      nextTick(() => {
+      setTimeout(() => {
         //初始化时指明要挂载的父元素Dom节点
         myPreviewer = jsPreviewDocx.init(document.getElementById("preview"));
 
@@ -96,11 +96,11 @@ const show = (filesrc) => {
           .catch((e) => {
             console.log("预览失败", e);
           });
-      });
+      }, 300);
     }
     if (FileType == "pdf") {
       dialogVisible.value = true;
-      nextTick(() => {
+      setTimeout(() => {
         myPreviewer = jsPreviewPdf.init(document.getElementById("preview"), {
           onError: (e) => {
             console.log("发生错误", e);
@@ -110,7 +110,7 @@ const show = (filesrc) => {
           },
         });
         myPreviewer.preview(filesrc);
-      });
+      }, 300);
     }
     if (FileType == "image") {
       imagePreview.value = true;
