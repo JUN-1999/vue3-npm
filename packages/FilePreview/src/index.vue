@@ -19,7 +19,7 @@
       append-to-body
       @close="close"
     >
-      <div id="preview"></div>
+      <div id="preview" style="width: 100%; height: 77vh"></div>
       <template #footer>
         <el-button @click="close">取消</el-button>
         <el-button type="primary" @click="save">下载</el-button>
@@ -168,18 +168,4 @@ defineExpose({
   show,
 });
 </script>
-<style lang="scss" scoped>
-#preview {
-  width: 100%;
-  // height: 100%;
-  height: 77vh;
-  //   width: 100vw;
-  //   position: fixed;
-  //   z-index: 9999999;
-}
-</style>
-<style>
-/* .el-dialog 样式并且有设置 样式 FilePreviewDialog 才生效  */
-.FilePreviewDialog {
-}
-</style>
+<style lang="scss" scoped></style>
